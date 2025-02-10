@@ -36,7 +36,7 @@
     // Добавляем плагины
     const plugins = [
 //      'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
-      'https://idavlaff.github.io/plugins/tracks', // @CUB thanks for all of your work
+      'https://idavlaff.github.io/plugins/tracks.js', // @CUB thanks for all of your work
       'https://idavlaff.github.io/plugins/timecode.js', // @LAMPAC thanks. !NB Timecode work only in torrents
       'https://idavlaff.github.io/plugins/beautify.js', // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify'. @BYLAMPA thanks, for fix rating issue on card
       'https://lampame.github.io/main/pubtorr/pubtorr.js', // @LME thanks. Public parsers
