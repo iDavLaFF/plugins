@@ -67,6 +67,7 @@
     function startSet() {
       const settings = {
         set: 'true',
+        language: 'ru',
 //        cub_domain: 'standby.cub.red',
         interface_size: 'small',
         advanced_animation: 'false',
@@ -77,6 +78,7 @@
         parser_use: 'true',
         lme_url_two: 'jacred_xyz',
         source: 'cub',
+        protocol: 'http',
         screensaver_time: '10',
         helper: 'false',
         pages_save_total: '3',
