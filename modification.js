@@ -21,7 +21,7 @@
           reactions: true,
           discuss: true,
           ai: true,
-          install_proxy: false,
+          install_proxy: true,
           subscribe: true,
           blacklist: true,
           persons: true,
@@ -35,7 +35,7 @@
 
     // Добавляем плагины
     const plugins = [
-//      'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
+      'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
       'https://idavlaff.github.io/plugins/tracks.js', // @CUB thanks for all of your work
       'https://idavlaff.github.io/plugins/timecode.js', // @LAMPAC thanks. !NB Timecode work only in torrents
       'https://idavlaff.github.io/plugins/beautify.js', // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify'. @BYLAMPA thanks, for fix rating issue on card
@@ -106,7 +106,7 @@
     Lampa.Listener.follow('app', (e) => {
       if (e.type === 'ready') {
         const headerElements = ['.open--notice', '.full-screen', '.head__split', '.head__time'];
-        const menuElements = ['[data-action=filter]', '[data-action=relise]', '[data-action=timetable]', '.menu__split', '[data-action=settings]', '[data-action=about]', '[data-action=console]'];
+        const menuElements = ['[data-action=filter]', '[data-action=relise]', '[data-action=timetable]', '.menu__split', '[data-action=about]', '[data-action=console]'];
 
         headerElements.forEach(selector => removeElements(selector));
         menuElements.forEach(selector => removeElements(selector));
