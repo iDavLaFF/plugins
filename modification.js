@@ -25,7 +25,8 @@
           subscribe: true,
           blacklist: true,
           persons: true,
-          ads: true
+          ads: true,
+          trailers: true
         }
       });
 
