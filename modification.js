@@ -109,8 +109,16 @@
     // Удаляем элементы из шапки и бокового меню
     Lampa.Listener.follow('app', (e) => {
       if (e.type === 'ready') {
+        // Определяем, является ли устройство мобильным
+        const isMobile = Lampa.Platform.screen('mobile');
+
+        // Список элементов для удаления из бокового меню в зависимости от платформы
+        const menuElements = isMobile
+        ? ['[data-action=filter]', '[data-action=relise]', '[data-action=timetable]', '[data-action=about]', '[data-action=console]'] // Сокращенный список для мобильных
+        : ['[data-action=filter]', '[data-action=relise]', '[data-action=timetable]', '.menu__split', '[data-action=settings]', '[data-action=about]', '[data-action=console]']; // Полный список для десктопов
+        // Список элементов для удаления из шапки
         const headerElements = ['.open--notice', '.full-screen', '.head__split', '.head__time'];
-        const menuElements = ['[data-action=filter]', '[data-action=relise]', '[data-action=timetable]',/* '.menu__split', '[data-action=settings]',*/ '[data-action=about]', '[data-action=console]'];
+//        const menuElements = ['[data-action=filter]', '[data-action=relise]', '[data-action=timetable]',/* '.menu__split', '[data-action=settings]',*/ '[data-action=about]', '[data-action=console]'];
 
         headerElements.forEach(selector => removeElements(selector));
         menuElements.forEach(selector => removeElements(selector));
@@ -118,6 +126,7 @@
     });
 
     // Скрываем элемент "Клубничка" из бокового меню
+    if (!isMobile) {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach(mutation => {
         mutation.addedNodes.forEach(node => {
@@ -131,6 +140,7 @@
         });
       });
     });
+  };
     observer.observe(document.body, { childList: true, subtree: true });
 
     // Отслеживание комбинации клавиш
