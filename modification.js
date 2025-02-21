@@ -122,26 +122,26 @@
 
         headerElements.forEach(selector => removeElements(selector));
         menuElements.forEach(selector => removeElements(selector));
+
+        // Скрываем элемент "Клубничка" из бокового меню
+        if (!isMobile) {
+          const observer = new MutationObserver((mutations) => {
+            mutations.forEach(mutation => {
+              mutation.addedNodes.forEach(node => {
+                if (node.nodeType === 1 && node.classList.contains('menu__item')) {
+                  const menuText = node.querySelector('.menu__text');
+                  if (menuText && menuText.textContent === 'Клубничка') {
+                    node.style.display = 'none';
+                    window.strawberryButton = node;
+                  }
+                }
+              });
+            });
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
+        }
       }
     });
-
-    // Скрываем элемент "Клубничка" из бокового меню
-    if (!isMobile) {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach(mutation => {
-        mutation.addedNodes.forEach(node => {
-          if (node.nodeType === 1 && node.classList.contains('menu__item')) {
-            const menuText = node.querySelector('.menu__text');
-            if (menuText && menuText.textContent === 'Клубничка') {
-              node.style.display = 'none';
-              window.strawberryButton = node;
-            }
-          }
-        });
-      });
-    });
-  };
-    observer.observe(document.body, { childList: true, subtree: true });
 
     // Отслеживание комбинации клавиш
     const keySequence = [38, 38, 39, 39, 40, 40];
