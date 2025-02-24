@@ -14,11 +14,11 @@
     button.on('hover:enter', function () {
       Lampa.Activity.push({
         url: '',
-        title: 'Мультфильмы - CUB',
+        title: 'Мультфильмы',
         component: 'category',
         genres: 16,
         id: 16,
-        source: 'cub',
+        source: 'tmdb',
         card_type: true,
         page: 1
       });
