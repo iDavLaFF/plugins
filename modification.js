@@ -70,7 +70,6 @@
       const settings = {
         set: 'true',
         language: 'ru',
-//        cub_domain: 'standby.cub.red',
         interface_size: 'small',
         advanced_animation: 'false',
         player_timecode: 'ask',
@@ -118,7 +117,6 @@
         : ['[data-action=filter]', '[data-action=relise]', '[data-action=timetable]', '.menu__split', '[data-action=settings]', '[data-action=about]', '[data-action=console]']; // Полный список для десктопов
         // Список элементов для удаления из шапки
         const headerElements = ['.open--notice', '.full-screen', '.head__split', '.head__time'];
-//        const menuElements = ['[data-action=filter]', '[data-action=relise]', '[data-action=timetable]',/* '.menu__split', '[data-action=settings]',*/ '[data-action=about]', '[data-action=console]'];
 
         headerElements.forEach(selector => removeElements(selector));
         menuElements.forEach(selector => removeElements(selector));
