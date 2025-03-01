@@ -3,7 +3,7 @@
 
     const GIST_FILENAME = "lampa_backup.json"; // Файл, где хранятся данные
     const API_URL = "https://api.github.com/gists"; // URL GitHub Gist API
-    const GITHUB_TOKEN = "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"; // Вставь сюда свой токен
+    const GITHUB_TOKEN = "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"; // Вставь сюда свой токен
 
     function exportData() {
         let favorite = Lampa.Storage.get('favorite') || {};
