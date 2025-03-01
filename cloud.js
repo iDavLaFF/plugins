@@ -1,140 +1,118 @@
 (function () {
     'use strict';
 
-    // Конфигурация плагина
-    const PLUGIN_NAME = 'github_gist_sync';
-    const GITHUB_API_URL = 'https://api.github.com/gists';
-    const GITHUB_TOKEN = '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'; // Замените на ваш токен GitHub
+    const GIST_FILENAME = "lampa_backup.json"; // Файл, где хранятся данные
+    const API_URL = "https://api.github.com/gists"; // URL GitHub Gist API
 
-    // Функция для получения данных из Lampa
-    function getData() {
-        return {
-            history: Lampa.Storage.get('history') || [],
-            favorites: Lampa.Storage.get('favorites') || []
+    function exportData() {
+        let favorite = Lampa.Storage.get('favorite') || {};
+        let history = Lampa.Storage.get('history') || {};
+
+        let backupData = {
+            favorite: favorite,
+            history: history
         };
-    }
 
-    // Функция для сохранения данных в Lampa
-    function setData(data) {
-        if (data.history) Lampa.Storage.set('history', data.history);
-        if (data.favorites) Lampa.Storage.set('favorites', data.favorites);
-        Lampa.Notify.show('Данные успешно загружены');
-    }
-
-    // Функция для экспорта данных в GitHub Gist
-    async function exportData() {
-        const data = getData();
-        const gistData = {
+        let gistPayload = {
+            description: "Lampa Backup",
+            public: false, // Приватный Gist
             files: {
-                'lampa_data.json': {
-                    content: JSON.stringify(data, null, 2)
+                [GIST_FILENAME]: {
+                    content: JSON.stringify(backupData, null, 2)
                 }
-            },
-            public: false // Сделать Gist приватным
+            }
         };
 
-        try {
-            const response = await fetch(GITHUB_API_URL, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `token ${GITHUB_TOKEN}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(gistData)
-            });
-
-            const result = await response.json();
-            if (response.ok) {
-                Lampa.Notify.show('Данные успешно экспортированы');
-                return result.id; // Возвращает ID Gist
+        fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "User-Agent": "Lampa-Backup" // GitHub требует User-Agent
+            },
+            body: JSON.stringify(gistPayload)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.id) {
+                Lampa.Storage.set("gist_id", data.id);
+                Lampa.Noty.show("✅ Резервная копия создана! Gist ID: " + data.id);
             } else {
-                throw new Error(result.message || 'Ошибка при экспорте данных');
+                console.error("Ошибка создания Gist", data);
+                Lampa.Noty.show("❌ Ошибка создания Gist");
             }
-        } catch (error) {
-            Lampa.Notify.show('Ошибка: ' + error.message);
-            console.error(error);
-        }
+        })
+        .catch(error => {
+            console.error("Ошибка:", error);
+            Lampa.Noty.show("❌ Ошибка сети");
+        });
     }
 
-    // Функция для импорта данных из GitHub Gist
-    async function importData(gistId) {
-        try {
-            const response = await fetch(`${GITHUB_API_URL}/${gistId}`, {
-                headers: {
-                    'Authorization': `token ${GITHUB_TOKEN}`
-                }
-            });
-
-            const result = await response.json();
-            if (response.ok) {
-                const content = result.files['lampa_data.json'].content;
-                const data = JSON.parse(content);
-                setData(data);
-            } else {
-                throw new Error(result.message || 'Ошибка при загрузке данных');
-            }
-        } catch (error) {
-            Lampa.Notify.show('Ошибка: ' + error.message);
-            console.error(error);
+    function importData(gistId) {
+        if (!gistId) {
+            Lampa.Noty.show("⚠️ Введите Gist ID для загрузки данных!");
+            return;
         }
+
+        fetch(`${API_URL}/${gistId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.files[GIST_FILENAME]) {
+                let backupData = JSON.parse(data.files[GIST_FILENAME].content);
+
+                Lampa.Storage.set('favorite', backupData.favorite || {});
+                Lampa.Storage.set('history', backupData.history || {});
+
+                Lampa.Noty.show("✅ Данные успешно загружены!");
+            } else {
+                Lampa.Noty.show("❌ Ошибка: файл данных не найден в Gist");
+            }
+        })
+        .catch(error => {
+            console.error("Ошибка:", error);
+            Lampa.Noty.show("❌ Ошибка загрузки Gist");
+        });
     }
 
-    // Добавляем плагин в интерфейс Lampa
-    function startPlugin() {
+    function setupUI() {
         Lampa.SettingsApi.addComponent({
-            component: PLUGIN_NAME,
-            icon: '🔧',
-            name: 'Синхронизация через GitHub Gist'
+            component: "gist_sync",
+            name: "Синхронизация через GitHub Gist",
+            icon: "🔄"
         });
 
-        // Кнопка экспорта
         Lampa.SettingsApi.addParam({
-            component: PLUGIN_NAME,
+            component: "gist_sync",
             param: {
-                name: 'Экспорт данных',
-                type: 'button',
-                values: '',
-                default: ''
+                name: "export",
+                type: "button",
+                values: "",
+                default: ""
             },
             field: {
-                name: 'Экспорт',
-                description: 'Экспорт истории и закладок в GitHub Gist'
+                name: "Экспорт данных",
+                description: "Сохранить избранное и историю в Gist"
             },
-            onChange: async function () {
-                const gistId = await exportData();
-                if (gistId) {
-                    Lampa.Notify.show(`Gist ID: ${gistId}`);
-                }
-            }
+            onChange: () => exportData()
         });
 
-        // Поле для импорта
         Lampa.SettingsApi.addParam({
-            component: PLUGIN_NAME,
+            component: "gist_sync",
             param: {
-                name: 'Импорт данных',
-                type: 'input',
-                placeholder: 'Введите Gist ID',
-                values: '',
-                default: ''
+                name: "gist_id",
+                type: "string",
+                values: "",
+                default: ""
             },
             field: {
-                name: 'Импорт',
-                description: 'Импорт истории и закладок из GitHub Gist'
+                name: "Gist ID",
+                description: "Введите ID для загрузки данных"
             },
-            onChange: function (value) {
-                if (value) {
-                    importData(value);
-                }
-            }
+            onChange: (value) => importData(value)
         });
-
-        // Устанавливаем флаг, что плагин запущен
-        window.github_gist_sync_initialized = true;
     }
 
-    // Запускаем плагин, если он еще не инициализирован
-    if (!window.github_gist_sync_initialized) {
-        startPlugin();
+    if (!window.gistSyncLoaded) {
+        setupUI();
+        window.gistSyncLoaded = true;
     }
 })();
