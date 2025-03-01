@@ -81,14 +81,14 @@
 
     // Добавляем плагин в интерфейс Lampa
     function startPlugin() {
-        Lampa.Settings.addComponent({
+        Lampa.SettingsApi.addComponent({
             component: PLUGIN_NAME,
-            icon: 'icon.png',
+            icon: '🔧',
             name: 'Синхронизация через GitHub Gist'
         });
 
         // Кнопка экспорта
-        Lampa.Settings.addParam({
+        Lampa.SettingsApi.addParam({
             component: PLUGIN_NAME,
             param: {
                 name: 'Экспорт данных',
@@ -109,7 +109,7 @@
         });
 
         // Поле для импорта
-        Lampa.Settings.addParam({
+        Lampa.SettingsApi.addParam({
             component: PLUGIN_NAME,
             param: {
                 name: 'Импорт данных',
