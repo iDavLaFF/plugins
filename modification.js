@@ -121,6 +121,7 @@
 
         headerElements.forEach(selector => removeElements(selector));
         menuElements.forEach(selector => removeElements(selector));
+        removeElements('.items-line:has(.items-line__title:contains("Последнее добавление"))', e.body);
 
         // Скрываем элемент "Клубничка" из бокового меню
         if (!isMobile) {
