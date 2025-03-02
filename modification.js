@@ -122,9 +122,6 @@
         headerElements.forEach(selector => removeElements(selector));
         menuElements.forEach(selector => removeElements(selector));
 
-        // Удаление элементов внутри items-line
-        removeElements('.items-line:has(.items-line__head:has(.items-line__title:contains("Показать подсказки снова")))', e.body);
-
         // Скрываем элемент "Клубничка" из бокового меню
         if (!isMobile) {
           const observer = new MutationObserver((mutations) => {
