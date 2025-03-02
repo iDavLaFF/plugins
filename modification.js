@@ -118,12 +118,12 @@
         : ['[data-action=filter]', '[data-action=relise]', '[data-action=timetable]', '.menu__split', '[data-action=settings]', '[data-action=about]', '[data-action=console]']; // Полный список для десктопов
         // Список элементов для удаления из шапки
         const headerElements = ['.open--notice', '.full-screen', '.head__split', '.head__time'];
-        // Список элементов внутри items-line
-        const titleElements = ['.items-line .items-line__head .items-line__title:contains("Последнее добавление")'];
 
         headerElements.forEach(selector => removeElements(selector));
         menuElements.forEach(selector => removeElements(selector));
-        titleElements.forEach(selector => removeElements(selector));
+
+        // Удаление элементов внутри items-line
+        removeElements('.items-line:has(.items-line__head:has(.items-line__title:contains("Показать подсказки снова")))', e.body);
 
         // Скрываем элемент "Клубничка" из бокового меню
         if (!isMobile) {
