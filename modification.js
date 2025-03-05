@@ -44,13 +44,13 @@
       'https://lampame.github.io/main/pubtorr/pubtorr.js', // @LME thanks. Public parsers
       'https://skaz.tv/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
       'https://bwa.to/rc', // @LAMPAC thanks. Online balansers plugin
-      'https://bwa.to/re', // @LAMPAC thanks. 18+ plugin
-//      'https://ab2024.ru/sisi.js', // @LAMPAC thanks. 18+ balansers plugin. @AB thanks for more stable version of plugin
-      'https://idavlaff.github.io/plugins/mult.js' // Add new category "Cartoons"
-/*      'https://lampame.github.io/main/nc/nc.js', // @LME thanks. new categories & collection button for 'franchises'
-      'https://lampame.github.io/main/its/its.js', // @LME thanks. torrents to Infuse saver (iOS/macOS). !NB 'Save all' need 'shortcut': https://www.icloud.com/shortcuts/406d7f6bdfcf466da153a38dea6bb663
-      'https://idavlaff.github.io/lampa-plugins/new4k.js', // Add new category "4K releases"
-      'https://idavlaff.github.io/lampa-plugins/doc.js', // Add new category "Documentary"*/
+//      'https://bwa.to/re', // @LAMPAC thanks. 18+ plugin
+      'https://ab2024.ru/sisi.js' // @LAMPAC thanks. 18+ balansers plugin. @AB thanks for more stable version of plugin
+//      'https://idavlaff.github.io/plugins/mult.js' // Add new category "Cartoons"
+//      'https://lampame.github.io/main/nc/nc.js', // @LME thanks. new categories & collection button for 'franchises'
+//      'https://lampame.github.io/main/its/its.js', // @LME thanks. torrents to Infuse saver (iOS/macOS). !NB 'Save all' need 'shortcut': https://www.icloud.com/shortcuts/406d7f6bdfcf466da153a38dea6bb663
+//      'https://idavlaff.github.io/lampa-plugins/new4k.js', // Add new category "4K releases"
+//      'https://idavlaff.github.io/lampa-plugins/doc.js', // Add new category "Documentary"*/
     ];
 
     Lampa.Utils.putScriptAsync(plugins, function (success){
