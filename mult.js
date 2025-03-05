@@ -18,7 +18,7 @@
         component: 'category',
         genres: 16,
         id: 16,
-        source: Storage.field('source'),
+        source: 'cub',
         card_type: true,
         page: 1
       });
