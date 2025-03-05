@@ -21,7 +21,7 @@
           reactions: true,
           discuss: true,
           ai: true,
-          install_proxy: true,
+          install_proxy: false,
           subscribe: true,
           blacklist: true,
           persons: true,
@@ -36,7 +36,7 @@
 
     // Добавляем плагины
     const plugins = [
-      'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
+//      'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
 //      'https://cub.red/plugin/tracks', // @CUB thanks.
       'https://idavlaff.github.io/plugins/tracks.js', // @CUB tracks plugin backup
       'https://idavlaff.github.io/plugins/timecode.js', // @LAMPAC thanks. !NB Timecode work only in torrents
