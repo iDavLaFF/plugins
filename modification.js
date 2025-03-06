@@ -123,16 +123,34 @@
         headerElements.forEach(selector => removeElements(selector));
         menuElements.forEach(selector => removeElements(selector));
 
-        // Скрываем элемент "Клубничка" из бокового меню
+        // Скрываем элемент "Клубничка" из верхней панели
         if (!isMobile) {
+          const hideSisiButton = (element) => {
+            if (element.classList.contains('head__action') && element.classList.contains('open--sisi')) {
+              element.style.display = 'none'; // Скрываем элемент
+              window.sisiButton = element; // Сохраняем ссылку на элемент
+            }
+          };
+
+          // Проверяем, есть ли элемент уже в DOM
+          const existingElement = document.querySelector('.head__action.open--sisi');
+          if (existingElement) {
+            hideSisiButton(existingElement);
+          }
+
+          // Наблюдаем за изменениями в DOM
           const observer = new MutationObserver((mutations) => {
             mutations.forEach(mutation => {
               mutation.addedNodes.forEach(node => {
-                if (node.nodeType === 1 && node.classList.contains('menu__item')) {
-                  const menuText = node.querySelector('.menu__text');
-                  if (menuText && menuText.textContent === 'Клубничка') {
-                    node.style.display = 'none';
-                    window.strawberryButton = node;
+                if (node.nodeType === 1) { // Проверяем, что это элемент
+                  hideSisiButton(node);
+
+                  // Если элемент содержит вложенные элементы, проверяем их тоже
+                  if (node.querySelector) {
+                  const nestedElement = node.querySelector('.head__action.open--sisi');
+                    if (nestedElement) {
+                      hideSisiButton(nestedElement);
+                    }
                   }
                 }
               });
@@ -152,10 +170,10 @@
         keyIndex++;
         if (keyIndex === keySequence.length) {
           keyIndex = 0;
-          if (window.strawberryButton) {
-            const strawberryButton = window.strawberryButton;
-            strawberryButton.style.display = (strawberryButton.style.display === 'none') ? '' : 'none';
-            console.log(strawberryButton.style.display === 'none' ? 'Элемент "Клубничка" снова скрыт!' : 'Элемент "Клубничка" теперь видим!');
+          if (window.sisiButton) {
+            const sisiButton = window.sisiButton;
+            sisiButton.style.display = (sisiButton.style.display === 'none') ? '' : 'none';
+            console.log(sisiButton.style.display === 'none' ? 'Элемент "Клубничка" снова скрыт!' : 'Элемент "Клубничка" теперь видим!');
           }
         }
       } else {
