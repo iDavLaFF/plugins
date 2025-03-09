@@ -72,7 +72,7 @@
         set: 'true',
         language: 'ru',
         interface_size: 'small',
-//        glass_style: 'true',
+        glass_style: 'false',
         advanced_animation: 'false',
         player_timecode: 'continue',
         video_quality_default: '2160',
