@@ -19,8 +19,8 @@
                                 return rating.source === 'tomatoes' && rating.value !== null;
                             });
 
-                        if (tomatoRating && parseFloat(rating.value) > 0) {
-                            html.find('.rate--rt').removeClass('hide').find('> div').eq(0).text(parseFloat(rating.value) >= 100 ? 100 : rating.value + '% 🍅');
+                        if (tomatoRating && parseFloat(tomatoRating.value) > 0) {
+                            html.find('.rate--rt').removeClass('hide').find('> div').eq(0).text(parseFloat(tomatoRating.value) >= 100 ? 100 : Math.round(tomatoRating.value) + '% 🍅');
                         }
                     }
                 });
