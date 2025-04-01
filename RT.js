@@ -20,7 +20,7 @@
                             });
 
                         if (tomatoRating && parseFloat(tomatoRating.value) > 0) {
-                            html.find('.rate--rt').removeClass('hide').find('> div').eq(0).text(parseFloat(tomatoRating.value) >= 100 ? 100 : Math.round(tomatoRating.value) + '% 🍅');
+                            html.find('.full-start__rate .rate--rt').removeClass('hide').find('> div').eq(0).text(parseFloat(tomatoRating.value) >= 100 ? 100 : Math.round(tomatoRating.value) + '% 🍅');
                         }
                     }
                 });
