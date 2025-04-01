@@ -12,12 +12,18 @@
                 };
                 $.ajax(settings).done(function (response) {
                     var ratings = response.ratings;
-                    // Фильтруем только рейтинг "tomatoes"
-                    var tomatoRating = ratings.find(function (rating) {
-                        return ratings.source === 'tomatoes' && ratings.value !== null;
-                    });
-                    if (tomatoRating && parseFloat(tomatoRating) > 0) {
-                        html.find('.rate--rt').removeClass('hide').find('> div').eq(0).text(parseFloat(tomatoRating) >= 100 ? 100 : tomatoRating + '% 🍅');
+                        if (ratings) {
+                            // Фильтруем только рейтинг "tomatoes"
+                            var tomatoRating = ratings.find(function (rating) {
+                                return rating.source === 'tomatoes' && rating.value !== null;
+                            });
+
+                        if (tomatoRating && parseFloat(tomatoRating.value) > 0) {
+                            var html = Lampa.Template.get('full', cardData.id);
+                            if (html) {
+                                html.find('.rate--rt').removeClass('hide').find('> div').eq(0).text(parseFloat(tomatoRating.value) >= 100 ? 100 : tomatoRating.value + '% 🍅');
+                            }
+                        }
                     }
                 });
             }
