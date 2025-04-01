@@ -20,10 +20,7 @@
                             });
 
                         if (tomatoRating && parseFloat(rating.value) > 0) {
-                            var html = Lampa.Template.get('full', cardData.id);
-                            if (html) {
-                                html.find('.rate--rt').removeClass('hide').find('> div').eq(0).text(parseFloat(rating.value) >= 100 ? 100 : rating.value + '% 🍅');
-                            }
+                            html.find('.rate--rt').removeClass('hide').find('> div').eq(0).text(parseFloat(rating.value) >= 100 ? 100 : rating.value + '% 🍅');
                         }
                     }
                 });
