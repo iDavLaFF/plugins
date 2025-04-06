@@ -163,10 +163,15 @@
         keyIndex++;
         if (keyIndex === keySequence.length) {
           keyIndex = 0;
-          if (window.sisiButton) {
-            const sisiButton = window.sisiButton;
-            sisiButton.style.display = (sisiButton.style.display === 'none') ? '' : 'none';
-            console.log(sisiButton.style.display === 'none' ? 'Элемент "Клубничка" снова скрыт!' : 'Элемент "Клубничка" теперь видим!');
+
+          // Пытаемся найти кнопку "Клубнички" и эмулируем нажатие
+          const sisiButton = $('.open--sisi');
+
+          if (sisiButton.length) {
+            sisiButton.trigger('hover:enter');
+            console.log('Комбинация введена — открываем "Клубничку"!');
+          } else {
+            console.error('Элемент .open--sisi не найден!');
           }
         }
       } else {
