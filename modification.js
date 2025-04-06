@@ -157,10 +157,22 @@
     // Отслеживание комбинации клавиш
     const keySequence = [38, 38, 39, 39, 40, 40];
     let keyIndex = 0;
+    let lastKeyTime = 0; // Для отслеживания времени между нажатиями
 
     $(document).on('keydown', function (e) {
+      const now = Date.now();
+
+      // Сброс комбинации, если между клавишами прошло больше 2 секунд
+      if (now - lastKeyTime > 2000) {
+        keyIndex = 0;
+      }
+      lastKeyTime = now;
+
+      // Проверяем, совпадает ли текущая клавиша с ожидаемой в последовательности
       if (e.keyCode === keySequence[keyIndex]) {
         keyIndex++;
+
+        // Если вся комбинация введена
         if (keyIndex === keySequence.length) {
           keyIndex = 0;
 
@@ -175,6 +187,6 @@
           }
         }
       } else {
-        keyIndex = 0;
+        keyIndex = 0; // Сброс при ошибке
       }
     });
