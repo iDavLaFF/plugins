@@ -188,7 +188,7 @@
           genres: object.genres,
           object: object,
           card_wide: true,
-          nomore: element.nomore
+          nomore: element.nomore,
           type: lezydata.line_type
         });
         item.create();
