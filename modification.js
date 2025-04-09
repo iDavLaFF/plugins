@@ -41,7 +41,7 @@
       'https://idavlaff.github.io/plugins/beautify.js', // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify'. @BYLAMPA thanks, for fix rating issue on card
       'https://lampame.github.io/main/pubtorr/pubtorr.js', // @LME thanks. Public parsers
 //      'https://skaz.tv/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
-      'http://skaztv.online/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
+      'https://skaztv.online/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
       'https://bwa.to/rc', // @LAMPAC thanks. Online balansers plugin
       'https://bwa.to/re' // @LAMPAC thanks. 18+ plugin
 //      'https://ab2024.ru/sisi.js' // @LAMPAC thanks. 18+ balansers plugin. @AB thanks for more stable version of plugin
