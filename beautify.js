@@ -298,6 +298,18 @@
       };
     }
 
+    // Перехватываем создание строк контента
+    const oldCreateLine = Lampa.InteractionLine.prototype.create;
+    Lampa.InteractionLine.prototype.create = function() {
+      oldCreateLine.apply(this, arguments);
+    
+      // Если это топовая строка (из данных lezydata)
+      if (this.params.object?.line_type === 'top') {
+        const $line = this.render().closest('.items-line');
+        $line.removeClass('items-line--type-none').addClass('items-line--type-top');
+      }
+    };
+
     function startPlugin() {
 //      if (!Lampa.Platform.screen('tv')) return console.log('no tv');
       window.plugin_interface_ready = true;
