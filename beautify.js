@@ -135,10 +135,6 @@
         html.append(info.render());
         html.append(scroll.render());
 
-        if (data.line_type) {
-          scroll.render().addClass('items-line--type-' + data.line_type);
-        }
-
         if (newlampa) {
           Lampa.Layer.update(html);
           Lampa.Layer.visible(scroll.render(true));
@@ -188,8 +184,7 @@
           genres: object.genres,
           object: object,
           card_wide: true,
-          nomore: element.nomore,
-          type: lezydata.line_type
+          nomore: element.nomore
         });
         item.create();
         item.onDown = this.down.bind(this);
@@ -297,18 +292,6 @@
         lezydata = null;
       };
     }
-
-    // Перехватываем создание строк контента
-    const oldCreateLine = Lampa.InteractionLine.prototype.create;
-    Lampa.InteractionLine.prototype.create = function() {
-      oldCreateLine.apply(this, arguments);
-    
-      // Если это топовая строка (из данных lezydata)
-      if (this.params.object?.line_type === 'top') {
-        const $line = this.render().closest('.items-line');
-        $line.removeClass('items-line--type-none').addClass('items-line--type-top');
-      }
-    };
 
     function startPlugin() {
       if (!Lampa.Platform.screen('tv')) return console.log('no tv');
