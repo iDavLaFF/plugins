@@ -311,7 +311,7 @@
     };
 
     function startPlugin() {
-//      if (!Lampa.Platform.screen('tv')) return console.log('no tv');
+      if (!Lampa.Platform.screen('tv')) return console.log('no tv');
       window.plugin_interface_ready = true;
       var old_interface = Lampa.InteractionMain;
       var new_interface = component;
