@@ -84,8 +84,6 @@
       var background_img = html.find('.full-start__background');
       var background_last = '';
       var background_timer;
-      var type = object.params?.type || 'none';
-      var view = type === 'card' ? 6 : type === 'top' ? 3 : 2;
 
       this.create = function () {};
 
@@ -133,8 +131,7 @@
         info = new create(object);
         info.create();
         scroll.minus(info.render());
-        data.slice(0, viewall ? data.length : view).forEach(this.append.bind(this));
-        html.addClass('items-line--type-' + type);
+        data.slice(0, viewall ? data.length : 2).forEach(this.append.bind(this));
         html.append(info.render());
         html.append(scroll.render());
 
