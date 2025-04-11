@@ -75,7 +75,7 @@
         scroll_by_item: true
       });
       var items = [];
-      var html = $('<div class="new-interface items-line--type-' + (object.params?.type || 'none') + '"><img class="full-start__background"></div>');
+      var html = $('<div class="new-interface"><img class="full-start__background"></div>');
       var active = 0;
       var newlampa = Lampa.Manifest.app_digital >= 166;
       var info;
