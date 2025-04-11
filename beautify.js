@@ -182,11 +182,11 @@
         element.ready = true;
         var item = new Lampa.InteractionLine(element, {
           url: element.url,
-          card_small: type !== 'top',
+          card_small: true,
           cardClass: element.cardClass,
           genres: object.genres,
           object: object,
-          card_wide: type === 'top',
+          card_wide: true,
           nomore: element.nomore
         });
         item.create();
