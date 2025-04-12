@@ -72,13 +72,4 @@
         }
     });
 
-    // Запуск, когда приложение готово
-    if (window.appready) {
-        init();
-    } else {
-        Lampa.Listener.follow('appready', function (event) {
-            if (event.type == 'ready') init();
-        });
-    }
-
 })();
