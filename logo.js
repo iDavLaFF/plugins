@@ -25,7 +25,7 @@
             const item = event.object;
             const type = item.name ? 'tv' : 'movie';
 
-            const apiKey = '890cec001f63b935c6bd4538ac1d146d';
+            const apiKey = '4ef0d7355d9ffb5151e987764708ce96';
             const tmdbUrl = `http://api.themoviedb.org/3/${type}/${item.id}/images?api_key=${apiKey}&language=${Lampa.Storage.get('language')}`;
 
             $.get(tmdbUrl, function (data) {
@@ -36,8 +36,8 @@
                         let logoImg = '';
 
                         const imgBase = 'http://image.tmdb.org/t/p/w500';
-                        const proxy = 'http://212.113.103.137:9118/proxy';
-                        const proxySvg = 'http://212.113.103.137:9118/proxyimg';
+                        const proxy = 'http://212.113.103.137:9118/proxyimg/';
+                        const proxySvg = 'http://212.113.103.137:9118/proxy/';
 
                         if (window.innerWidth > 585) {
                             const mode = Lampa.Storage.get('logo_card');
@@ -72,4 +72,26 @@
         }
     });
 
+    // Запуск, когда приложение готово
+    if (window.appready) {
+        init();
+    } else {
+        Lampa.Listener.follow('appready', function (event) {
+            if (event.type == 'ready') init();
+        });
+    }
+
+    function init() {
+        // Переопределяет методы консоли — защита от отладки
+        const overrideConsole = function () {
+            const methods = ['log', 'warn', 'error', 'info', 'debug', 'trace'];
+            methods.forEach((method) => {
+                const original = console[method];
+                console[method] = function () {
+                    original.apply(console, arguments);
+                };
+            });
+        };
+        overrideConsole();
+    }
 })();
