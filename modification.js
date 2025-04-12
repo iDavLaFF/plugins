@@ -218,7 +218,7 @@
             const type = item.name ? 'tv' : 'movie';
 
             const apiKey = '890cec001f63b935c6bd4538ac1d146d';
-            const tmdbUrl = Lampa.Utils.protocol() + `api.themoviedb.org/3/${type}/${item.id}/images?api_key=${apiKey}&language=${Lampa.Storage.get('language')}`;
+            const tmdbUrl = `http://api.themoviedb.org/3/${type}/${item.id}/images?api_key=${apiKey}&language=${Lampa.Storage.get('language')}`;
 
             $.get(tmdbUrl, function (data) {
                 if (data.logos && data.logos[0]) {
@@ -227,9 +227,9 @@
                         const container = event.card.full().render();
                         let logoImg = '';
 
-                        const imgBase = Lampa.Utils.protocol() + 'image.tmdb.org/t/p/w500';
-                        const proxy = Lampa.Utils.protocol() + '212.113.103.137:9118/proxy';
-                        const proxySvg = Lampa.Utils.protocol() + '212.113.103.137:9118/proxyimg';
+                        const imgBase = 'http://image.tmdb.org/t/p/w500';
+                        const proxy = 'http://212.113.103.137:9118/proxy';
+                        const proxySvg = 'http://212.113.103.137:9118/proxyimg';
 
                         if (window.innerWidth > 585) {
                             const mode = Lampa.Storage.get('logo_card');
