@@ -82,16 +82,5 @@
     }
 
     function init() {
-        // Переопределяет методы консоли — защита от отладки
-        const overrideConsole = function () {
-            const methods = ['log', 'warn', 'error', 'info', 'debug', 'trace'];
-            methods.forEach((method) => {
-                const original = console[method];
-                console[method] = function () {
-                    original.apply(console, arguments);
-                };
-            });
-        };
-        overrideConsole();
     }
 })();
