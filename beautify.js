@@ -20,14 +20,35 @@
 
       this.draw = function (data) {
         var create = ((data.release_date || data.first_air_date || '0000') + '').slice(0, 4);
-        var vote = parseFloat((data.vote_average || 0) + '').toFixed(1);
+        var vote = parseFloat((data.imdb_rating || data.kp_rating || data.cub_hundred_rating || data.vote_average || 0) + '').toFixed(1);
         var head = [];
         var details = [];
         var countries = Lampa.Api.sources.tmdb.parseCountries(data);
         var pg = Lampa.Api.sources.tmdb.parsePG(data);
         if (create !== '0000') head.push('<span>' + create + '</span>');
         if (countries.length > 0) head.push(countries.join(', '));
-        if (vote > 0) details.push('<div class="full-start__rate"><div>' + vote + '</div><div>TMDB</div></div>');
+        if (vote > 0) {
+          var rateType = '';
+          var rateIcon = '';
+          var rateValue = (vote >= 10 ? 10 : vote);
+          if (data.imdb_rating) {
+            rateType = 'IMDB';
+            rateIcon = '<img src="./img/rate/imdb.svg" alt="IMDb">';
+          } else if (data.kp_rating) {
+            rateType = 'КП';
+            rateIcon = '<img src="./img/rate/kp.svg" alt="КП">';
+          } else if (data.vote_average) {
+            rateType = 'TMDB';
+            rateIcon = '<img src="./img/rate/tmdb.svg" alt="TMDb">';
+          } else {
+            rateValue = data.cub_hundred_fire ? Utils$2.bigNumberToShort(data.cub_hundred_fire) : rateValue;
+          }
+          if (rateIcon) {
+            details.push('<div class="full-start__rate">' + rateIcon + '<div>' + rateValue + '</div>' + '<div>' + rateType + '</div>' + '</div>');
+          } else {
+            details.push('<div class="full-start__rate"><div>' + rateValue + '</div></div>');
+          }
+        }
         if (data.genres && data.genres.length > 0) details.push(data.genres.map(function (item) {
           return Lampa.Utils.capitalizeFirstLetter(item.name);
         }).join(' | '));
