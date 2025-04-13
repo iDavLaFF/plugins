@@ -65,6 +65,7 @@
     function startSet() {
       const settings = {
         set: 'true',
+        cub_domain: 'cub.rip',
         language: 'ru',
         interface_size: 'small',
         glass_style: 'true',
