@@ -21,7 +21,7 @@
           reactions: true,
           discuss: true,
           ai: true,
-          install_proxy: false,
+          install_proxy: true,
           subscribe: true,
           blacklist: true,
           persons: true,
