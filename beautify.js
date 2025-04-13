@@ -32,13 +32,10 @@
           var rateIcon = '';
           var rateValue = (vote >= 10 ? 10 : vote);
           if (data.imdb_rating) {
-            rateType = 'IMDB';
             rateIcon = '<img src="./img/rate/imdb.svg" alt="IMDb">';
           } else if (data.kp_rating) {
-            rateType = 'КП';
             rateIcon = '<img src="./img/rate/kp.svg" alt="КП">';
           } else if (data.vote_average) {
-            rateType = 'TMDB';
             rateIcon = '<img src="./img/rate/tmdb.svg" alt="TMDb">';
           } else {
             rateValue = data.cub_hundred_fire ? Utils$2.bigNumberToShort(data.cub_hundred_fire) : rateValue;
