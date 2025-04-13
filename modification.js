@@ -2,8 +2,8 @@
     if (typeof window.lampa_settings !== 'undefined') {
       // Обновляем настройки
       Object.assign(window.lampa_settings, {
-        socket_use: false,
-        socket_methods: false,
+        socket_use: true,
+        socket_methods: true,
         account_use: true,
         account_sync: false,
         plugins_use: false,
@@ -21,7 +21,7 @@
           reactions: true,
           discuss: true,
           ai: true,
-          install_proxy: true,
+          install_proxy: false,
           subscribe: true,
           blacklist: true,
           persons: true,
@@ -38,7 +38,7 @@
     const plugins = [
       'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
       'https://idavlaff.github.io/plugins/tracks.js', // @CUB tracks plugin backup
-//      'https://idavlaff.github.io/plugins/beautify.js', // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify'. @BYLAMPA thanks, for fix rating issue on card
+      'https://idavlaff.github.io/plugins/beautify.js', // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify'. @BYLAMPA thanks, for fix rating issue on card
 //      'https://idavlaff.github.io/plugins/logo.js', //
       'https://lampame.github.io/main/pubtorr/pubtorr.js', // @LME thanks. Public parsers
 //      'https://skaz.tv/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
