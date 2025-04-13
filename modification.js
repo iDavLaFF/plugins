@@ -2,8 +2,8 @@
     if (typeof window.lampa_settings !== 'undefined') {
       // Обновляем настройки
       Object.assign(window.lampa_settings, {
-        socket_use: true,
-        socket_methods: true,
+        socket_use: false,
+        socket_methods: false,
         account_use: true,
         account_sync: false,
         plugins_use: false,
