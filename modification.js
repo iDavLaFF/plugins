@@ -36,7 +36,7 @@
 
     // Добавляем плагины
     const plugins = [
-      'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
+//      'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
       'https://idavlaff.github.io/plugins/tracks.js', // @CUB tracks plugin backup
       'https://idavlaff.github.io/plugins/beautify.js', // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify'. @BYLAMPA thanks, for fix rating issue on card
 //      'https://idavlaff.github.io/plugins/logo.js', //
