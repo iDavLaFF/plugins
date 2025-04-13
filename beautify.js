@@ -44,7 +44,7 @@
             rateValue = data.cub_hundred_fire ? Utils$2.bigNumberToShort(data.cub_hundred_fire) : rateValue;
           }
           if (rateIcon) {
-            details.push('<div class="full-start__rate">' + rateIcon + '<div>' + rateValue + '</div>' + '<div>' + rateType + '</div>' + '</div>');
+            details.push('<div class="full-start__rate">' + rateIcon + '<div>' + rateValue + '</div>' + '</div>');
           } else {
             details.push('<div class="full-start__rate"><div>' + rateValue + '</div></div>');
           }
