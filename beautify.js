@@ -37,13 +37,13 @@
             source = 'КП';
           } else if (data.vote_average) {
             source = 'TMDb';
-          } else if {
+          } else if (data.cub_hundred_rating) {
             source = 'CUB';
           }
 
           if (source) {
             rateText = '<span class="card__vote-label">' + source + '</span><span class="card__vote-value">' + (vote >= 10 ? 10 : vote) + '</span>';
-            details.push('<div class="full-start__rate">' + rateText + '<div>' + (vote >= 10 ? 10 : vote) + '</div>' + '</div>');
+            details.push('<div class="full-start__rate">' + rateText + '</div>');
           } else {
             details.push('<div class="full-start__rate"><div>' + (vote >= 10 ? 10 : vote) + '</div></div>');
           }
