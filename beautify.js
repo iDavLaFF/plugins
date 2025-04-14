@@ -20,30 +20,12 @@
 
       this.draw = function (data) {
         var create = ((data.release_date || data.first_air_date || '0000') + '').slice(0, 4);
-        var vote = parseFloat((data.imdb_rating || data.kp_rating || data.cub_hundred_rating || data.vote_average || 0) + '').toFixed(1);
         var head = [];
         var details = [];
         var countries = Lampa.Api.sources.tmdb.parseCountries(data);
         var pg = Lampa.Api.sources.tmdb.parsePG(data);
         if (create !== '0000') head.push('<span>' + create + '</span>');
         if (countries.length > 0) head.push(countries.join(', '));
-        if (vote > 0) {
-          var vote_elem = document.createElement('div');
-          if (data.imdb_rating) {
-            vote_elem.classList.add('card__vote', 'card__vote--imdb');
-            vote_elem.innerText = '<span class="card__vote-label">IMDb</span><span class="card__vote-value">' + (vote >= 10 ? 10 : vote) + '</span>';
-          } else if (data.kp_rating) {
-            vote_elem.classList.add('card__vote', 'card__vote--kp');
-            vote_elem.innerText = '<span class="card__vote-label">КП</span><span class="card__vote-value">' + (vote >= 10 ? 10 : vote) + '</span>';
-          } else if (data.vote_average) {
-            vote_elem.classList.add('card__vote', 'card__vote--tmdb');
-            vote_elem.innerText = '<span class="card__vote-label">TMDb</span><span class="card__vote-value">' + (vote >= 10 ? 10 : vote) + '</span>';
-          } else {
-            vote_elem.classList.add('card__vote');
-            vote_elem.innerText = data.cub_hundred_fire ? Utils$2.bigNumberToShort(data.cub_hundred_fire) : vote >= 10 ? 10 : vote;
-          }
-          this.card.querySelector('.card__view').appendChild(vote_elem);
-        }
         if (data.genres && data.genres.length > 0) details.push(data.genres.map(function (item) {
           return Lampa.Utils.capitalizeFirstLetter(item.name);
         }).join(' | '));
