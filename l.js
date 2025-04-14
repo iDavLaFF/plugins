@@ -20,9 +20,8 @@
 
     window.logoplugin || (window.logoplugin = !0, Lampa.Listener.follow("full", function(a) {
         if ("complite" == a.type && "1" != Lampa.Storage.get("logo_glav")) {
-            var type = e.first_air_date ? "tv" : "movie";
             var e = a.data.movie,
-                t = Lampa.TMDB.api(type + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language"));
+                t = Lampa.TMDB.api((e.first_air_date ? "tv" : "movie") + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language"));
             
             console.log(t);
             
