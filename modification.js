@@ -15,7 +15,7 @@
         dcma: false,
         push_state: false,
         iptv: false,
-        feed: false,
+        feed: true,
         disable_features: {
           dmca: true,
           reactions: true,
