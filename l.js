@@ -22,7 +22,7 @@
     window.__logo_cache = window.__logo_cache || {};
 
     // Предзагрузка логотипа при наведении
-    $('body').on('mouseenter', '.card', function() {
+    $('body').on('hover:focus', '.card', function() {
         if (Lampa.Storage.get("logo_glav") === "1") return;
 
         var cardData = $(this).data('card-data');
