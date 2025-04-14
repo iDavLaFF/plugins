@@ -19,13 +19,13 @@
         }
     });
 
-    // Основной триггер на выбор карточки
+    // Основной триггер на выбор карточки (фильма или сериала)
     Lampa.Listener.follow('card_interfice_type', function (event) {
         if (event.type === 'movie' && Lampa.Storage.get('logo_card') !== false) {
             const item = event.object;
             const type = item.name ? 'tv' : 'movie';
 
-            const apiKey = '4ef0d7355d9ffb5151e987764708ce96';
+            const apiKey = Lampa.TMDB.key();
             const tmdbUrl = Lampa.TMDB.api(`${type}/${item.id}/images?api_key=${apiKey}&language=${Lampa.Storage.get('language')}`);
 
             $.get(tmdbUrl, function (data) {
@@ -82,6 +82,16 @@
     }
 
     function init() {
-        // Дополнительная инициализация (если понадобится в будущем)
+        // Переопределяет методы консоли — защита от отладки
+        const overrideConsole = function () {
+            const methods = ['log', 'warn', 'error', 'info', 'debug', 'trace'];
+            methods.forEach((method) => {
+                const original = console[method];
+                console[method] = function () {
+                    original.apply(console, arguments);
+                };
+            });
+        };
+        overrideConsole();
     }
 })();
