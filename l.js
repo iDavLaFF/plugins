@@ -20,8 +20,9 @@
 
     window.logoplugin || (window.logoplugin = !0, Lampa.Listener.follow("full", function(a) {
         if ("complite" == a.type && "1" != Lampa.Storage.get("logo_glav")) {
+            var type = e.first_air_date ? "tv" : "movie";
             var e = a.data.movie,
-                t = Lampa.TMDB.api(e.name ? "tv/" : "movie/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language"));
+                t = Lampa.TMDB.api(type + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language"));
             
             console.log(t);
             
@@ -29,8 +30,8 @@
                 if (e.logos && e.logos[0]) {
                     var t = e.logos[0].file_path;
                     "" != t && a.object.activity.render().find(".full-start-new__title").html(
-                        '<img style="margin-top: 5px; max-height: 125px;" src="' + 
-                        Lampa.TMDB.image("/t/p/w300" + t.replace(".svg", ".png")) + 
+                        '<img style="margin-top: 0.3em; margin-bottom: 0.4em; max-height: 1.8em;" src="' + 
+                        Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png")) + 
                         '" />'
                     );
                 }
