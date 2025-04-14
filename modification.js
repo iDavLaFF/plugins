@@ -40,6 +40,7 @@
       'https://idavlaff.github.io/plugins/tracks.js', // @CUB tracks plugin backup
       'https://idavlaff.github.io/plugins/beautify.js', // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify'. @BYLAMPA thanks, for fix rating issue on card
 //      'https://idavlaff.github.io/plugins/logo.js', //
+      'https://lampaplugins.github.io/store/logo.js',
       'https://lampame.github.io/main/pubtorr/pubtorr.js', // @LME thanks. Public parsers
 //      'https://skaz.tv/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
       'https://skaztv.online/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
