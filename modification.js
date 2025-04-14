@@ -116,7 +116,7 @@
         ? ['[data-action=filter]', '[data-action=relise]', '[data-action=timetable]', '[data-action=about]', '[data-action=console]'] // Сокращенный список для мобильных
         : ['[data-action=filter]', '[data-action=relise]', '[data-action=timetable]', '.menu__split', '[data-action=settings]', '[data-action=about]', '[data-action=console]']; // Полный список для десктопов
         // Список элементов для удаления из шапки
-        const headerElements = ['.head__logo-icon', '.head__logo-halloween', '.head__menu-icon', '.head__title', '.processing', '.open--broadcast', '.open--premium', '.open--feed', '.open--notice', '.notice--icon', '.open--profile', '.full-screen', '.head__split', '.head__time'];
+        const headerElements = ['.head__logo-icon', '.head__logo-halloween', '.head__menu-icon', '.head__title', '.processing', '.open--broadcast', '.open--premium', '.open--notice', '.notice--icon', '.open--profile', '.full-screen', '.head__split', '.head__time'];
 
         headerElements.forEach(selector => removeElements(selector));
         menuElements.forEach(selector => removeElements(selector));
