@@ -30,15 +30,17 @@
                     var t = e.logos[0].file_path;
                     if ("" != t) {
                         var titleElement = a.object.activity.render().find(".full-start-new__title");
-                        var parentContainer = titleElement.parent();
+                        var originalContent = titleElement.html();
+                        titleElement.after(`
+                        <div class="logo-container" style="overflow: hidden; height: 4em; position: relative; margin-bottom: 0.2em;">
+                        <div class="logo-animation" style="position: relative; width: 100%; transform: translateY(20px); opacity: 0; transition: all 0.5s ease;">
+                            <img style="max-height: 2em; margin-top: 1em; margin-bottom: 0.5em;" src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}"></div></div>`);
+                        var logoContainer = titleElement.next(".logo-container");
                         titleElement.css({'transition': 'all 0.5s ease', 'transform': 'translateY(-20px)', 'opacity': '0'});
                         setTimeout(function() {
-                            parentContainer.append(`
-                            <div class="logo-container" style="overflow: hidden; height: 4em; position: relative; margin-bottom: 0.2em;">
-                            <div class="logo-animation" style="position: relative; width: 100%; transform: translateY(20px); opacity: 0; transition: all 0.5s ease;">
-                                <img style="max-height: 2em; margin-top: 1em; margin-bottom: 0.5em;" src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}"></div></div>`);
+                            logoContainer.show();
                             setTimeout(function() {
-                                parentContainer.find(".logo-animation").css({'transform': 'translateY(0)', 'opacity': '1'});
+                                logoContainer.find(".logo-animation").css({'transform': 'translateY(0)', 'opacity': '1'});
                                 setTimeout(function() {
                                     titleElement.remove();
                                 }, 500);
