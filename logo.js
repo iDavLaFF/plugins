@@ -42,7 +42,7 @@
                             setTimeout(function() {
                                 titleElement.find(".logo-animation").css({'transform': 'translateY(0)', 'opacity': '1'});
                             }, 50);
-                        }, 600);
+                        }, 500);
                     }
                 }
             });
