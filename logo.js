@@ -33,7 +33,7 @@
                         var originalContent = titleElement.html();
                         $('<style>').text(`
                             .title-fade-up { opacity: 1; transform: translateY(0); transition: all 0.5s ease; }
-                            .title-fade-up.hide { opacity: 0; transform: translateY(-20px); }
+                            .title-fade-up.hide { opacity: 0; transform: translateY(20px); }
                             .logo-animation { position: absolute; width: 100%; bottom: 0; transform: translateY(20px); opacity: 0; transition: all 0.5s ease; }
                             .logo-animation.show { transform: translateY(0); opacity: 1; }
                         `).appendTo('head');
