@@ -32,7 +32,7 @@
                         var titleElement = a.object.activity.render().find(".full-start-new__title");
                         var originalContent = titleElement.html();
                         $('<style>').text(`
-                            @keyframes thanos-snap {
+                            @keyframes thanos-dust {
                                 0% { opacity: 1; transform: scale(1); filter: blur(0); }
                                 50% { opacity: 0.5; transform: scale(1.05); filter: blur(1px); }
                                 100% { opacity: 0; transform: scale(0.3); filter: blur(8px); }
