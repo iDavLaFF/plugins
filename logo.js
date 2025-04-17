@@ -26,35 +26,61 @@
             console.log(t);
             
             $.get(t, function(e) {
-                if (e.logos && e.logos[0]) {
-                    var t = e.logos[0].file_path;
-                    if ("" != t) {
-                        var titleElement = a.object.activity.render().find(".full-start-new__title");
-                        var originalContent = titleElement.html();
-
-                            titleElement.after('<div class="logo-container" style="overflow: hidden; height: 1.8em; position: relative; display: none;">' + 
-                                '<div class="logo-animation" style="position: absolute; width: 100%; transform: translateY(20px); opacity: 0; transition: all 0.5s ease;">' + 
-                                '<img style="margin-top: 0.3em; margin-bottom: 0.4em; max-height: 1.8em; display: block;" src="' + 
-                                Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png")) + '" />' + '</div>' + '</div>');
-
-                            var logoContainer = titleElement.next(".logo-container");
-
-                            titleElement.css({'transition': 'all 0.5s ease', 'transform': 'translateY(-20px)', 'opacity': '0'});
-
-                            setTimeout(function() {
-                                logoContainer.show();
-
-                                setTimeout(function() {
-                                    logoContainer.find(".logo-animation").css({'transform': 'translateY(0)', 'opacity': '1'});
-
-                                    setTimeout(function() {
-                                        titleElement.remove();
-                                    }, 500);
-                                }, 50);
-                            }, 500);
-                    }
-                }
+    if (e.logos && e.logos[0]) {
+        var t = e.logos[0].file_path;
+        if ("" != t) {
+            var titleElement = a.object.activity.render().find(".full-start-new__title");
+            var parentContainer = titleElement.parent();
+            
+            // 1. Анимация исчезновения текста
+            titleElement.css({
+                'transition': 'all 0.5s ease',
+                'transform': 'translateY(-20px)',
+                'opacity': '0'
             });
+            
+            // 2. Создаем логотип в том же контейнере
+            setTimeout(function() {
+                parentContainer.append(`
+                    <div class="logo-container" style="
+                        overflow: hidden; 
+                        height: ${titleElement.height()}px; 
+                        position: relative;
+                        margin-bottom: 0.2em;
+                    ">
+                        <div class="logo-animation" style="
+                            position: relative;
+                            width: 100%;
+                            transform: translateY(20px);
+                            opacity: 0;
+                            transition: all 0.5s ease;
+                        ">
+                            <img style="
+                                max-height: 1.8em;
+                                max-width: 100%;
+                                display: block;
+                                margin: 0 auto;
+                            " src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}">
+                        </div>
+                    </div>
+                `);
+                
+                // 3. Анимация появления логотипа
+                setTimeout(function() {
+                    parentContainer.find(".logo-animation").css({
+                        'transform': 'translateY(0)',
+                        'opacity': '1'
+                    });
+                    
+                    // Удаляем оригинальный заголовок после завершения анимации
+                    setTimeout(function() {
+                        titleElement.remove();
+                    }, 500);
+                }, 50);
+            }, 500);
+        }
+    }
+});
         }
     }));
 }();
