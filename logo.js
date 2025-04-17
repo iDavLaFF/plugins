@@ -32,26 +32,22 @@
                         var titleElement = a.object.activity.render().find(".full-start-new__title");
                         var originalContent = titleElement.html();
                         $('<style>').text(`
-                            @keyframes thanos-snap {
-                                0% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
-                                20% { opacity: 0.8; transform: scale(0.8) translateY(0); filter: blur(0.5px); }
-                                40% { opacity: 0.6; transform: scale(0.6) translateY(0); filter: blur(1px); }
-                                60% { opacity: 0.4; transform: scale(0.4) translateY(0); filter: blur(2.5px); }
-                                80% { opacity: 0.2; transform: scale(0.2) translateY(0); filter: blur(5px); }
-                                100% { opacity: 0; transform: scale(0.1) translateY(0); filter: blur(10px); }
-                            }
-                            .thanos-snap { animation: thanos-snap 0.5s forwards; transform-origin: center; }
+                            .title-fade-up { opacity: 1; transform: translateY(0); transition: all 0.5s ease; }
+                            .title-fade-up.hide { opacity: 0; transform: translateY(-20px); }
+                            .logo-animation { position: absolute; width: 100%; bottom: 0; transform: translateY(20px); opacity: 0; transition: all 0.5s ease; }
+                            .logo-animation.show { transform: translateY(0); opacity: 1; }
                         `).appendTo('head');
                         titleElement.after(`
                         <div class="logo-container" style="overflow: hidden; height: 15em; position: relative; display: none; margin-bottom: 2em;">
-                        <div class="logo-animation" style="position: absolute; width: 100%; bottom: 0; transform: translateY(20px); opacity: 0; transition: all 0.5s ease;">
-                            <img style="display: block; max-width: 100%; height: auto;" src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}"></div></div>`);
+                        <div class="logo-animation">
+                            <img style="display: block; max-width: 80%; height: auto;" src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}"></div></div>`);
                         var logoContainer = titleElement.next(".logo-container");
-                        titleElement.addClass('thanos-snap');
+                        titleElement.addClass('title-fade-up');
                         setTimeout(function() {
                             logoContainer.show();
+                            titleElement.addClass('hide');
                             setTimeout(function() {
-                                logoContainer.find(".logo-animation").css({'transform': 'translateY(0)', 'opacity': '1'});
+                                logoContainer.find(".logo-animation").addClass('show');
                                 setTimeout(function() {
                                     titleElement.remove();
                                 }, 500);
