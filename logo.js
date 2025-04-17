@@ -46,6 +46,7 @@
                         overflow: hidden; 
                         height: 4em; 
                         position: relative;
+                        margin-bottom: 0.2em;
                     ">
                         <div class="logo-animation" style="
                             position: relative;
