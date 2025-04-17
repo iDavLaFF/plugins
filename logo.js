@@ -34,8 +34,8 @@
                         $('<style>').text(`
                             @keyframes thanos-snap {
                                 0% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
-                                50% { opacity: 0.7; transform: scale(0.7) translateY(0); filter: blur(1px); }
-                                100% { opacity: 0; transform: scale(0.3) translateY(0); filter: blur(8px); }
+                                50% { opacity: 0.5; transform: scale(0.5) translateY(0); filter: blur(3px); }
+                                100% { opacity: 0; transform: scale(0.25) translateY(0); filter: blur(12px); }
                             }
                             .thanos-snap {
                                 animation: thanos-snap 0.7s forwards;
