@@ -29,10 +29,14 @@
                 if (e.logos && e.logos[0]) {
                     var t = e.logos[0].file_path;
                     "" != t && a.object.activity.render().find(".full-start-new__title").html(
-                        '<img style="margin-top: 0.3em; margin-bottom: 0.4em; max-height: 1.8em;" src="' + 
-                        Lampa.TMDB.image("/t/p/w300" + t.replace(".svg", ".png")) + 
-                        '" />'
-                    );
+                        '<div class="logo-container" style="overflow: hidden; height: 2em; position: relative;">' + 
+                        '<div class="logo-animation" style="position: absolute; width: 100%; transition: all 0.3s ease; transform: translateY(100%); opacity: 0;">' + 
+                        '<img style="margin-top: 0.5em; margin-bottom: 0.5em; max-height: 2em; max-width: 10em; display: block;" src="' + 
+                        Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png")) + '" />' + '</div>' + '</div>');
+
+                    setTimeout(function() {
+                        a.object.activity.render().find(".logo-animation").css({'transform': 'translateY(0)', 'opacity': '1'});
+                    }, 50);
                 }
             });
         }
