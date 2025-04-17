@@ -34,8 +34,8 @@
                         $('<style>').text(`
                             @keyframes thanos-snap {
                                 0% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
-                                50% { opacity: 0.7; transform: scale(1.05) translateY(-10px); filter: blur(2px); }
-                                100% { opacity: 0; transform: scale(0.3) translateY(-20px); filter: blur(12px); }
+                                50% { opacity: 0.8; transform: scale(1.05) translateY(-10px); filter: blur(1px); }
+                                100% { opacity: 0; transform: scale(0.3) translateY(20px); filter: blur(12px); }
                             }
                             .thanos-snap {
                                 animation: thanos-snap 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -53,9 +53,9 @@
                                 logoContainer.find(".logo-animation").css({'transform': 'translateY(0)', 'opacity': '1'});
                                 setTimeout(function() {
                                     titleElement.remove();
-                                }, 700);
+                                }, 500);
                             }, 50);
-                        }, 700);
+                        }, 300);
                     }
                 }
             });
