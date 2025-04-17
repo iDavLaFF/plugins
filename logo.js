@@ -30,7 +30,7 @@
                     var t = e.logos[0].file_path;
                     "" != t && a.object.activity.render().find(".full-start-new__title").html(
                         '<div class="logo-container" style="overflow: hidden; height: 2em; position: relative;">' + 
-                        '<div class="logo-animation" style="position: absolute; width: 100%; transition: all 0.5s ease; transform: translateY(100%); opacity: 0;">' + 
+                        '<div class="logo-animation" style="position: absolute; width: 100%; transition: all 0.6s ease; transform: translateY(100%); opacity: 0;">' + 
                         '<img style="margin-top: 0.5em; margin-bottom: 0.5em; max-height: 2em; max-width: 10em; display: block;" src="' + 
                         Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png")) + '" />' + '</div>' + '</div>');
 
