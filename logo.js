@@ -34,8 +34,11 @@
                         $('<style>').text(`
                             @keyframes thanos-snap {
                                 0% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
-                                50% { opacity: 0.5; transform: scale(0.5) translateY(0); filter: blur(3px); }
-                                100% { opacity: 0; transform: scale(0.25) translateY(0); filter: blur(12px); }
+                                20% { opacity: 0.8; transform: scale(0.8) translateY(0); filter: blur(0.5px); }
+                                40% { opacity: 0.6; transform: scale(0.6) translateY(0); filter: blur(1px); }
+                                60% { opacity: 0.4; transform: scale(0.4) translateY(0); filter: blur(2.5px); }
+                                80% { opacity: 0.2; transform: scale(0.2) translateY(0); filter: blur(5px); }
+                                100% { opacity: 0; transform: scale(0.1) translateY(0); filter: blur(10px); }
                             }
                             .thanos-snap {
                                 animation: thanos-snap 0.7s forwards;
