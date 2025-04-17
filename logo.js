@@ -44,9 +44,8 @@
                 parentContainer.append(`
                     <div class="logo-container" style="
                         overflow: hidden; 
-                        height: ${titleElement.height()}px; 
+                        height: 4em; 
                         position: relative;
-                        margin-bottom: 0.2em;
                     ">
                         <div class="logo-animation" style="
                             position: relative;
@@ -56,10 +55,9 @@
                             transition: all 0.5s ease;
                         ">
                             <img style="
-                                max-height: 1.8em;
-                                max-width: 100%;
-                                display: block;
-                                margin: 0 auto;
+                                max-height: 2em;
+                                margin-top: 1em;
+                                margin-bottom: 0.5em;
                             " src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}">
                         </div>
                     </div>
