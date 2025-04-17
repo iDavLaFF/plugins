@@ -36,16 +36,16 @@
                         <div class="logo-animation" style="position: absolute; width: 100%; bottom: 0; transform: translateY(20px); opacity: 0; transition: all 0.5s ease;">
                             <img style="display: block; max-width: 100%; height: auto;" src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}"></div></div>`);
                         var logoContainer = titleElement.next(".logo-container");
-                        titleElement.css({'transition': 'all 0.3s ease', 'transform': 'translateY(-20px)', 'opacity': '0'});
+                        titleElement.css({'transition': 'all 0.5s ease', 'transform': 'translateY(-20px)', 'opacity': '0'});
                         setTimeout(function() {
                             logoContainer.show();
                             setTimeout(function() {
                                 logoContainer.find(".logo-animation").css({'transform': 'translateY(0)', 'opacity': '1'});
                                 setTimeout(function() {
                                     titleElement.remove();
-                                }, 300);
+                                }, 500);
                             }, 50);
-                        }, 300);
+                        }, 500);
                     }
                 }
             });
