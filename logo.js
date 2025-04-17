@@ -38,7 +38,7 @@
                                 100% { opacity: 0; transform: scale(0.3) translateY(0); filter: blur(8px); }
                             }
                             .thanos-snap {
-                                animation: thanos-snap 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                                animation: thanos-snap 0.7s forwards;
                             }
                         `).appendTo('head');
                         titleElement.after(`
