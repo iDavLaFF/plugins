@@ -67,9 +67,9 @@
                                 logoContainer.find(".logo-animation").css({'transform': 'translateY(0)', 'opacity': '1'});
                                 setTimeout(function() {
                                     titleElement.remove();
-                                }, 500);
+                                }, 700);
                             }, 50);
-                        }, 500);
+                        }, 700);
                     }
                 }
             });
