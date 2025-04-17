@@ -40,13 +40,13 @@
                                     filter: blur(0);
                                 }
                                 50% { 
-                                    opacity: 0.8; 
+                                    opacity: 0.5; 
                                     transform: scale(1.05) translateY(-10px); 
                                     filter: blur(1px);
                                 }
                                 100% { 
                                     opacity: 0; 
-                                    transform: scale(0.3) translateY(20px); 
+                                    transform: scale(0.3) translateY(-20px); 
                                     filter: blur(8px);
                                 }
                             }
