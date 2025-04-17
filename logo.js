@@ -32,30 +32,13 @@
                         var titleElement = a.object.activity.render().find(".full-start-new__title");
                         var originalContent = titleElement.html();
                         $('<style>').text(`
-                            @keyframes thanos-dust {
-                                0% { opacity: 1; transform: scale(1); filter: blur(0); }
-                                50% { opacity: 0.5; transform: scale(1.05); filter: blur(1px); }
-                                100% { opacity: 0; transform: scale(0.3); filter: blur(8px); }
+                            @keyframes thanos-snap {
+                                0% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+                                50% { opacity: 0.5; transform: scale(1.05) translateY(-10px); filter: blur(1px); }
+                                100% { opacity: 0; transform: scale(0.3) translateY(-20px); filter: blur(8px); }
                             }
-                            .thanos-dust {
-                                position: relative;
-                                animation: thanos-dust 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-                            }
-                            .thanos-dust::before {
-                                content: "";
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                right: 0;
-                                bottom: 0;
-                                background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
-                                opacity: 0;
-                                animation: dust-fade 0.8s ease-out forwards;
-                            }
-                            @keyframes dust-fade {
-                                0% { opacity: 0; transform: scale(1); }
-                                50% { opacity: 0.6; }
-                                100% { opacity: 0; transform: scale(1.5); }
+                            .thanos-snap {
+                                animation: thanos-snap 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
                             }
                         `).appendTo('head');
                         titleElement.after(`
@@ -63,16 +46,16 @@
                         <div class="logo-animation" style="position: absolute; width: 100%; bottom: 0; transform: translateY(20px); opacity: 0; transition: all 0.5s ease;">
                             <img style="display: block; max-width: 100%; height: auto;" src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}"></div></div>`);
                         var logoContainer = titleElement.next(".logo-container");
-                        titleElement.addClass('thanos-dust');
+                        titleElement.addClass('thanos-snap');
                         setTimeout(function() {
                             logoContainer.show();
                             setTimeout(function() {
                                 logoContainer.find(".logo-animation").css({'transform': 'translateY(0)', 'opacity': '1'});
                                 setTimeout(function() {
                                     titleElement.remove();
-                                }, 800);
+                                }, 1000);
                             }, 50);
-                        }, 300);
+                        }, 600);
                     }
                 }
             });
