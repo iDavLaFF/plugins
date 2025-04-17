@@ -34,7 +34,7 @@
                         titleElement.after(`
                         <div class="logo-container" style="overflow: hidden; height: 15em; position: relative; display: none; margin-bottom: 1em;">
                         <div class="logo-animation" style="position: absolute; width: 100%; bottom: 0; transform: translateY(20px); opacity: 0; transition: all 0.5s ease;">
-                            <img style="display: block; max-width: 100%; height: auto; margin: 0 auto;" src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}"></div></div>`);
+                            <img style="display: block; max-width: 100%; height: auto;" src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}"></div></div>`);
                         var logoContainer = titleElement.next(".logo-container");
                         titleElement.css({'transition': 'all 0.5s ease', 'transform': 'translateY(-20px)', 'opacity': '0'});
                         setTimeout(function() {
