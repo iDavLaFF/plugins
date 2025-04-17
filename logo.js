@@ -40,7 +40,7 @@
                                 80% { opacity: 0.2; transform: scale(0.2) translateY(0); filter: blur(5px); }
                                 100% { opacity: 0; transform: scale(0.1) translateY(0); filter: blur(10px); }
                             }
-                            .thanos-snap { animation: thanos-snap 0.7s forwards; transform-origin: center; }
+                            .thanos-snap { animation: thanos-snap 0.5s forwards; transform-origin: center; }
                         `).appendTo('head');
                         titleElement.after(`
                         <div class="logo-container" style="overflow: hidden; height: 15em; position: relative; display: none; margin-bottom: 2em;">
@@ -54,9 +54,9 @@
                                 logoContainer.find(".logo-animation").css({'transform': 'translateY(0)', 'opacity': '1'});
                                 setTimeout(function() {
                                     titleElement.remove();
-                                }, 700);
+                                }, 500);
                             }, 50);
-                        }, 700);
+                        }, 500);
                     }
                 }
             });
