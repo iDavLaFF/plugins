@@ -35,7 +35,7 @@
                             @keyframes thanos-snap {
                                 0% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
                                 50% { opacity: 0.8; transform: scale(1.05) translateY(-10px); filter: blur(1px); }
-                                100% { opacity: 0; transform: scale(0.3) translateY(-30px); filter: blur(8px); }
+                                100% { opacity: 0; transform: scale(0.3) translateY(-40px); filter: blur(8px); }
                             }
                             .thanos-snap {
                                 animation: thanos-snap 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
