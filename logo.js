@@ -31,12 +31,12 @@
                     if ("" != t) {
                         var titleElement = a.object.activity.render().find(".full-start-new__title");
 
-                        titleElement.css({'transition': 'all 0.6s ease', 'transform': 'translateY(-20px)', 'opacity': '0'});
+                        titleElement.css({'transition': 'all 0.5s ease', 'transform': 'translateY(-20px)', 'opacity': '0'});
 
                         setTimeout(function() {
                             titleElement.html('<div class="logo-container" style="overflow: hidden; height: ' + titleElement.height() + 'px; position: relative;">' + 
-                                '<div class="logo-animation" style="position: absolute; width: 100%; transform: translateY(20px); opacity: 0; transition: all 0.6s ease;">' + 
-                                '<img style="margin-top: 0.5em; margin-bottom: 0.5em; max-height: 2em; max-width: 10em; display: block;" src="' + 
+                                '<div class="logo-animation" style="position: absolute; width: 100%; transform: translateY(20px); opacity: 0; transition: all 0.5s ease;">' + 
+                                '<img style="margin-top: 0.3em; margin-bottom: 0.4em; max-height: 1.8em; display: block;" src="' + 
                                 Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png")) + '" />' + '</div>' + '</div>');
 
                             setTimeout(function() {
