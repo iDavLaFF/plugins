@@ -32,9 +32,9 @@
                         var titleElement = a.object.activity.render().find(".full-start-new__title");
                         var originalContent = titleElement.html();
                         titleElement.after(`
-                        <div class="logo-container" style="overflow: hidden; height: 6em; position: relative; display: none; margin-bottom: 2em;">
+                        <div class="logo-container" style="overflow: hidden; height: 15em; position: relative; display: none; margin-bottom: 1em;">
                         <div class="logo-animation" style="position: relative; width: 100%; transform: translateY(20px); opacity: 0; transition: all 0.5s ease;">
-                            <img style="display: block; margin-bottom: 2em;" src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}"></div></div>`);
+                            <img style="display: block;" src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}"></div></div>`);
                         var logoContainer = titleElement.next(".logo-container");
                         titleElement.css({'transition': 'all 0.5s ease', 'transform': 'translateY(-20px)', 'opacity': '0'});
                         setTimeout(function() {
