@@ -1,46 +1,10 @@
-    // Проверяем, существует ли объект lampa_settings
-    if (typeof window.lampa_settings !== 'undefined') {
-      // Обновляем настройки
-      Object.assign(window.lampa_settings, {
-        socket_use: true,
-        socket_methods: true,
-        account_use: true,
-        account_sync: false,
-        plugins_use: false,
-        plugins_store: false,
-        torrents_use: true,
-        white_use: false,
-        lang_use: false,
-        read_only: false,
-        dcma: false,
-        push_state: false,
-        iptv: false,
-        feed: true,
-        disable_features: {
-          dmca: true,
-          reactions: true,
-          discuss: true,
-          ai: true,
-          install_proxy: true,
-          subscribe: true,
-          blacklist: true,
-          persons: true,
-          ads: true,
-          trailers: true
-        }
-      });
-
-      // Логируем изменения для отладки
-      console.log('Настройки Lampa были изменены:', window.lampa_settings);
-    }
-
     // Добавляем плагины
     const plugins = [
-      'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
-      'https;//cub.rip/plugin/tracks', // @CUB tracks plugin
+//      'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
+      'https://cub.rip/plugin/tracks.js', // @CUB tracks plugin
       'https://idavlaff.github.io/plugins/beautify.js', // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify'. @BYLAMPA thanks, for fix rating issue on card
-      'https://idavlaff.github.io/plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add fix + new animations
-//      'https://lampaplugins.github.io/store/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add
+      'https://idavlaff.github.io/plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add. (#fix) 
+//      'https://lampaplugins.github.io/store/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add.
       'https://lampame.github.io/main/pubtorr/pubtorr.js', // @LME thanks. Public parsers
 //      'https://skaz.tv/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
       'https://skaztv.online/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
