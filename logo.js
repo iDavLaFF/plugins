@@ -1,25 +1,8 @@
 !function() {
     "use strict";
-    
-    Lampa.SettingsApi.addParam({
-        component: "interface",
-        param: {
-            name: "logo_glav",
-            type: "select",
-            values: {
-                1: "Скрыть",
-                0: "Отображать"
-            },
-            default: "0"
-        },
-        field: {
-            name: "Логотипы вместо названий",
-            description: "Отображает логотипы фильмов вместо текста"
-        }
-    });
 
     window.logoplugin || (window.logoplugin = !0, Lampa.Listener.follow("full", function(a) {
-        if ("complite" == a.type && "1" != Lampa.Storage.get("logo_glav")) {
+        if ("complite" == a.type) {
             var e = a.data.movie,
                 t = Lampa.TMDB.api((e.first_air_date ? "tv" : "movie") + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language"));
             
@@ -29,21 +12,16 @@
                 if (e.logos && e.logos[0]) {
                     var t = e.logos[0].file_path;
                     if ("" != t) {
-                        var titleElement = a.object.activity.render().find(".full-start-new__title");
-                        var originalContent = titleElement.html();
-                        titleElement.after(`
-                        <div class="logo-container" style="overflow: hidden; height: 15em; position: relative; display: none; margin-bottom: 2em;">
-                        <div class="logo-animation" style="position: absolute; width: 100%; bottom: 0; transform: translateY(20px); opacity: 0; transition: all 0.5s ease;">
-                            <img style="display: block; max-height: 15em; width: auto;" src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}"></div></div>`);
-                        var logoContainer = titleElement.next(".logo-container");
+                        var logoBlock = a.object.activity.render().find(".full-start-new__logo-block");
+                        var titleElement = logoBlock.find(".full-start-new__title");
+                        var logoImg = $(`<img class="logo-img" style="display: block; max-height: 13em; width: auto; margin-top: 0; align-self: center; transform: translateY(20px); opacity: 0; transition: all 0.5s ease; visibility: hidden;" src="${Lampa.TMDB.image("/t/p/w500" + t.replace(".svg", ".png"))}">`);
+                        logoBlock.append(logoImg);
                         titleElement.css({'transition': 'all 0.5s ease', 'transform': 'translateY(-20px)', 'opacity': '0'});
                         setTimeout(function() {
-                            logoContainer.show();
+                            titleElement.remove();
+                            logoImg.css('visibility', 'visible');
                             setTimeout(function() {
-                                logoContainer.find(".logo-animation").css({'transform': 'translateY(0)', 'opacity': '1'});
-                                setTimeout(function() {
-                                    titleElement.remove();
-                                }, 500);
+                                logoImg.css({'transform': 'translateY(0%)', 'opacity': '1'});
                             }, 50);
                         }, 500);
                     }

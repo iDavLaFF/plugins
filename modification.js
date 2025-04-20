@@ -84,7 +84,6 @@
         helper: 'false',
         pages_save_total: '3',
         keyboard_type: 'integrate',
-        logo_glav: '0',
         sisi_preview: 'false',
         torrents_filter: JSON.stringify({
             quality: ['4k', '1080p']
@@ -100,7 +99,7 @@
 
     Lampa.Settings.listener.follow('open', (e) => {
       const components = ['account', 'tmdb', 'parental_control', 'sisi'];
-      const params = ['light_version', 'background', 'background_type', 'black_style', 'card_interfice_type', 'card_interfice_poster', 'card_interfice_cover', 'glass_style', 'glass_opacity', 'card_interfice_reactions', 'interface_sound_play', 'interface_sound_level', 'scroll_type', 'card_views_type', 'hide_outside_the_screen', 'logo_glav', 'player_normalization', 'playlist_next', 'player_timecode', 'player_scale_method', 'player_hls_method', 'player_rewind', 'subtitles_start', 'subtitles_size', 'subtitles_stroke', 'subtitles_backdrop', 'video_quality_default', 'jackett_interview', 'parse_lang', 'parse_timeout', 'parse_in_search', 'torrserver_savedb', 'torrserver_preload', 'cache_images', 'screensaver', 'screensaver_type', 'screensaver_time', 'helper', 'helper--start-again', 'pages_save_total', 'time_offset', 'navigation_type', 'keyboard_type', 'card_quality', 'card_episodes', 'device_name', 'export'];
+      const params = ['light_version', 'background', 'background_type', 'black_style', 'card_interfice_type', 'card_interfice_poster', 'card_interfice_cover', 'glass_style', 'glass_opacity', 'card_interfice_reactions', 'interface_sound_play', 'interface_sound_level', 'scroll_type', 'card_views_type', 'hide_outside_the_screen', 'player_normalization', 'playlist_next', 'player_timecode', 'player_scale_method', 'player_hls_method', 'player_rewind', 'subtitles_start', 'subtitles_size', 'subtitles_stroke', 'subtitles_backdrop', 'video_quality_default', 'jackett_interview', 'parse_lang', 'parse_timeout', 'parse_in_search', 'torrserver_savedb', 'torrserver_preload', 'cache_images', 'screensaver', 'screensaver_type', 'screensaver_time', 'helper', 'helper--start-again', 'pages_save_total', 'time_offset', 'navigation_type', 'keyboard_type', 'card_quality', 'card_episodes', 'device_name', 'export'];
       const titles = ['Фон', 'Карточка', 'Стекло', 'Системные звуки', 'Субтитры', 'Дополнительно', 'Скринсейвер', 'Подсказки', 'Еще'];
 
       removeElements(components.map(c => `[data-component="${c}"]`).join(','), e.body);
