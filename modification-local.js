@@ -4,7 +4,7 @@
       './plugins/tmdb_proxy.js', // @CUB thanks. TMDB Proxy v1.0.3
       './plugins/tracks.js', // @CUB tracks plugin
 //      './plugins/beautify.js', // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify'. @BYLAMPA thanks, for fix rating issue on card
-      './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add. (#fix) 
+      './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add. (#fix)
 //      'https://lampaplugins.github.io/store/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add.
       'https://lampame.github.io/main/pubtorr/pubtorr.js', // @LME thanks. Public parsers
 //      'https://skaz.tv/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
