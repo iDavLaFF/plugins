@@ -6,7 +6,7 @@
 //      './plugins/beautify.js', // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify'. @BYLAMPA thanks, for fix rating issue on card
       './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add. (#fix)
 //      'https://lampaplugins.github.io/store/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add.
-      'https://lampame.github.io/main/pubtorr/pubtorr.js', // @LME thanks. Public parsers
+//      'https://lampame.github.io/main/pubtorr/pubtorr.js', // @LME thanks. Public parsers
 //      'https://skaz.tv/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
       'https://skaztv.online/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
 //      'https://bwa.to/rc', // @LAMPAC thanks. Online balansers plugin
@@ -30,7 +30,6 @@
     function startSet() {
       const settings = {
         set: 'true',
-        cub_domain: 'cub.rip',
         language: 'ru',
         interface_size: 'small',
         glass_style: 'true',
@@ -38,16 +37,16 @@
         player_timecode: 'continue',
         video_quality_default: '2160',
         parser_use: 'true',
-        lme_url_two: 'jacred_xyz',
+        jackett_url: 'jacred.xyz',
         tmdb_lang: 'ru',
         poster_size: 'w500',
         proxy_tmdb_auto: 'true',
         proxy_tmdb: 'true',
-        source: 'cub',
+        source: 'tmdb',
         protocol: 'http',
         screensaver_time: '10',
         helper: 'false',
-        pages_save_total: '3',
+        pages_save_total: '1',
         keyboard_type: 'integrate',
         sisi_preview: 'false',
         torrents_filter: JSON.stringify({
