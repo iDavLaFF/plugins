@@ -1,14 +1,12 @@
     // Добавляем плагины
     const plugins = [
-//      'https://plugin.rootu.top/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
-      './plugins/tmdb_proxy.js', // @CUB thanks. TMDB Proxy v1.0.3
-      './plugins/tracks.js', // @CUB tracks plugin
+      './plugins/tmdb.js', // @ROOTU thanks. TMDB Proxy v1.1.1
+//      './plugins/tracks.js', // @CUB tracks plugin
 //      './plugins/beautify.js', // @CUB thanks, !'but pay for a big background, seriously?' Combine 'interface' & 'cardify' plugins => 'beautify'. @BYLAMPA thanks, for fix rating issue on card
       './plugins/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add. (#fix)
 //      'https://lampaplugins.github.io/store/logo.js', // @ELENATV1 thanks. Movie & TV Show logo add.
-//      'https://lampame.github.io/main/pubtorr/pubtorr.js', // @LME thanks. Public parsers
-//      'https://skaz.tv/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
-      'https://skaztv.online/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
+      'https://skaz.tv/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
+//      'https://skaztv.online/export.js', //@SKAZ thanks. Bookmarks & History backup plugin
 //      'https://bwa.to/rc', // @LAMPAC thanks. Online balansers plugin
       'https://bwa.to/re' // @LAMPAC thanks. 18+ plugin
     ];
@@ -32,14 +30,19 @@
         set: 'true',
         language: 'ru',
         interface_size: 'small',
-        glass_style: 'true',
+        background: 'false',
+        black_style: 'true',
+        glass_style: 'false',
         advanced_animation: 'false',
+        card_views_type: 'preload',
         player_timecode: 'continue',
         video_quality_default: '2160',
         parser_use: 'true',
+        parser_torrent_type: 'jackett',
         jackett_url: 'jacred.xyz',
+        jackett_interview: 'all',
         tmdb_lang: 'ru',
-        poster_size: 'w500',
+        poster_size: 'w300',
         proxy_tmdb_auto: 'true',
         proxy_tmdb: 'true',
         source: 'tmdb',
@@ -47,6 +50,7 @@
         screensaver_time: '10',
         helper: 'false',
         pages_save_total: '1',
+        cache_images: 'true',
         keyboard_type: 'integrate',
         sisi_preview: 'false',
         torrents_filter: JSON.stringify({
