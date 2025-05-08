@@ -6,7 +6,7 @@
             var e = a.data.movie,
                 mediaType = e.first_air_date ? "tv" : "movie",
                 cacheKey = 'logo_' + mediaType + '_' + e.id,
-                currentLang = Lampa.Storage.get("language"),
+                currentLang = Lampa.Storage.field('tmdb_lang'),
                 cachedLogo = localStorage.getItem(cacheKey);
             if (cachedLogo) {
                 cachedLogo = JSON.parse(cachedLogo);
@@ -15,14 +15,14 @@
                     return;
                 }
             }
-            var mainRequest = Lampa.TMDB.api(mediaType + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + currentLang);
+            var mainRequest = Utils.protocol() + "tmdbapi.rootu.top/3/" + mediaType + "/" + e.id + "/images?api_key=4ef0d7355d9ffb5151e987764708ce96" + "&language=" + currentLang;
             $.get(mainRequest, function(mainData) {
                 if (mainData.logos && mainData.logos[0] && mainData.logos[0].file_path) {
                     var logoPath = mainData.logos[0].file_path;
                     cacheLogo(logoPath, cacheKey);
                     insertLogo(a.object.activity.render(), logoPath, false);
                 } else if (currentLang !== 'en') {
-                    var enRequest = Lampa.TMDB.api(mediaType + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=en");
+                    var enRequest = Utils.protocol() + "tmdbapi.rootu.top/3/" + mediaType + "/" + e.id + "/images?api_key=4ef0d7355d9ffb5151e987764708ce96" + "&language=en";
                     $.get(enRequest, function(enData) {
                         if (enData.logos && enData.logos[0] && enData.logos[0].file_path) {
                             var logoPath = enData.logos[0].file_path;
@@ -42,8 +42,8 @@
         localStorage.setItem(key, JSON.stringify(logoData));
     }
     function insertLogo(renderElement, logoPath, fromCache) {
-        var logoBlock = renderElement.find(".full-start-new__logo-block");
-        var titleElement = logoBlock.find(".full-start-new__title");
+        var logoBlock = renderElement.find(".full-start__logo-block");
+        var titleElement = logoBlock.find(".full-start__title");
         var logoImg = $(`<img class="logo-img" style="display: block; max-height: 11em; width: auto; margin-top: -1em; margin-bottom: 1em; align-self: center; transform: translateY(20px); transition: all 0.5s ease;" src="${Lampa.TMDB.image("/t/p/w500" + logoPath)}">`);
         titleElement.remove();
         if (fromCache) {
