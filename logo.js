@@ -15,14 +15,14 @@
                     return;
                 }
             }
-            var mainRequest = Utils.protocol() + "tmdbapi.rootu.top/3/" + mediaType + "/" + e.id + "/images?api_key=4ef0d7355d9ffb5151e987764708ce96" + "&language=" + currentLang;
+            var mainRequest = "https://tmdbapi.rootu.top/3/" + mediaType + "/" + e.id + "/images?api_key=4ef0d7355d9ffb5151e987764708ce96" + "&language=" + currentLang;
             $.get(mainRequest, function(mainData) {
                 if (mainData.logos && mainData.logos[0] && mainData.logos[0].file_path) {
                     var logoPath = mainData.logos[0].file_path;
                     cacheLogo(logoPath, cacheKey);
                     insertLogo(a.object.activity.render(), logoPath, false);
                 } else if (currentLang !== 'en') {
-                    var enRequest = Utils.protocol() + "tmdbapi.rootu.top/3/" + mediaType + "/" + e.id + "/images?api_key=4ef0d7355d9ffb5151e987764708ce96" + "&language=en";
+                    var enRequest = "https://tmdbapi.rootu.top/3/" + mediaType + "/" + e.id + "/images?api_key=4ef0d7355d9ffb5151e987764708ce96" + "&language=en";
                     $.get(enRequest, function(enData) {
                         if (enData.logos && enData.logos[0] && enData.logos[0].file_path) {
                             var logoPath = enData.logos[0].file_path;
