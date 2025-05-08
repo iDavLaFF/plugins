@@ -44,7 +44,7 @@
     function insertLogo(renderElement, logoPath, fromCache) {
         var logoBlock = renderElement.find(".full-start__logo-block");
         var titleElement = logoBlock.find(".full-start__title");
-        var logoImg = $(`<img class="logo-img" style="display: block; max-height: 11em; width: auto; margin-top: -1em; margin-bottom: 1em; align-self: center; transform: translateY(20px); transition: all 0.5s ease;" src="${Lampa.TMDB.image("/t/p/w500" + logoPath)}">`);
+        var logoImg = $(`<img class="logo-img" style="display: block; max-height: 11em; width: auto; margin-top: -1em; margin-bottom: 1em; align-self: center; transform: translateY(20px); transition: all 0.5s ease;" src="${"https://tmdbimg.rootu.top/t/p/w500" + logoPath)}">`);
         titleElement.remove();
         if (fromCache) {
             logoBlock.append(logoImg);
